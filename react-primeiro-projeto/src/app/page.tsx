@@ -6,6 +6,8 @@ import { peopleList } from "@/data/peopleList";  // Importa a lista de pessoas d
 
 export default function page () {  // Exporta o componente para que possa ser utilizado em outras partes da aplicação
 
+  const list = peopleList.map((person) => {})
+
   // Filtra a lista de pessoas para obter apenas aqueles com a profissão "basketball"
   const basketball = peopleList.filter(person => person.profession === "basketball");
 
@@ -26,16 +28,16 @@ export default function page () {  // Exporta o componente para que possa ser ut
         {/* Exibe um componente Person para Arthur Boma */}
         <Person     
             name="Arthur Boma"
-            avatar="https://arquivos.info.ufrn.br/arquivos/20220942038250117992589d1099ed8398/foto_do_perfil.JPG"
+            avatar="boma.jpeg"
             roles={["CEO da Tesla", "CEO da Spacex"]}
         />
       </ExampleAreas>
       {/* Exibe um componente Person para Vitor */}
       <ExampleAreas>
-        <p className="font-bold">4)Pessoa Vitor</p>
+        <p className="font-bold">4)Pessoa Gustavo</p>
         <Person
-          name="Vitor "
-          avatar="https://arquivos.info.ufrn.br/arquivos/20220942038250117992589d1099ed8398/foto_do_perfil.JPG"
+          name="Gustavo"
+          avatar="Gustavo.jpeg"
           roles={["CEO do Biome", "CEO dos concursos"]}
         />
       </ExampleAreas>
@@ -47,6 +49,16 @@ export default function page () {  // Exporta o componente para que possa ser ut
           autor="conhecido"
         />
       </ExampleAreas>
+
+      <ul>
+        {peopleList.map((index, person) => {
+          return(
+            
+          )
+        })}
+        <li></li>
+      </ul>
+
       {/* Condicional: Exibe a lista de pessoas apenas se houver pessoas na lista */}
       {peopleList.length > 0 && 
         <ul>
