@@ -3,13 +3,13 @@ import { ExampleAreas } from "@/components/ExempleAreas";
 import { GeoForm } from "@/components/GeoForms";   // Importa o componente GeoForm de um arquivo local
 import { Person } from "@/components/Person";  // Importa o componente Person de um arquivo local
 import { peopleList } from "@/data/peopleList";  // Importa a lista de pessoas de um arquivo local
+import { peopleList2 } from "@/data/peopleList2";
+
 
 export default function page () {  // Exporta o componente para que possa ser utilizado em outras partes da aplicação
 
-  const list = peopleList.map((person) => {})
-
   // Filtra a lista de pessoas para obter apenas aqueles com a profissão "basketball"
-  const basketball = peopleList.filter(person => person.profession === "basketball");
+  const listaFiltrada = peopleList2.filter((person) => person.profession === "Quimico")
 
   return (
     <div>
@@ -28,16 +28,16 @@ export default function page () {  // Exporta o componente para que possa ser ut
         {/* Exibe um componente Person para Arthur Boma */}
         <Person     
             name="Arthur Boma"
-            avatar="boma.jpeg"
+            avatar="https://arquivos.info.ufrn.br/arquivos/20220942038250117992589d1099ed8398/foto_do_perfil.JPG"
             roles={["CEO da Tesla", "CEO da Spacex"]}
         />
       </ExampleAreas>
       {/* Exibe um componente Person para Vitor */}
       <ExampleAreas>
-        <p className="font-bold">4)Pessoa Gustavo</p>
+        <p className="font-bold">4)Pessoa Vitor</p>
         <Person
-          name="Gustavo"
-          avatar="Gustavo.jpeg"
+          name="Vitor "
+          avatar="https://arquivos.info.ufrn.br/arquivos/20220942038250117992589d1099ed8398/foto_do_perfil.JPG"
           roles={["CEO do Biome", "CEO dos concursos"]}
         />
       </ExampleAreas>
@@ -49,37 +49,27 @@ export default function page () {  // Exporta o componente para que possa ser ut
           autor="conhecido"
         />
       </ExampleAreas>
-
-      <ul>
-        {peopleList.map((index, person) => {
-          return(
-            
-          )
-        })}
-        <li></li>
-      </ul>
-
-      {/* Condicional: Exibe a lista de pessoas apenas se houver pessoas na lista */}
-      {peopleList.length > 0 && 
-        <ul>
-          {/* Itera sobre a lista de pessoas e exibe o nome e profissão de cada uma */}
-          {peopleList.map(person => 
-            <li key={person.id}> {person.name} - {person.profession}</li>)}
-        </ul>
-      }
-
-      {/* Condicional: Exibe a lista de jogadores de basquete apenas se houver jogadores na lista */}
-      {basketball.length > 0 &&
-        <>
-          <h3>Lista de jogadores de basquete:</h3>  {/* Título da seção de jogadores */}
+      <ExampleAreas>
+       <p className="font-bold">6)</p>
+        {/* Condicional: Exibe a lista de pessoas apenas se houver pessoas na lista */}
+        {peopleList.length > 0 &&
           <ul>
-            {/* Itera sobre a lista de jogadores de basquete e exibe o nome de cada um */}
-            {basketball.map(person => 
-              <li key={person.id}>{person.name}</li>
-            )}
+            {peopleList.map((pessoa, key) => 
+              <li key={key}>Meu id é: {pessoa.id}, meu nome é {pessoa.name}, e minha profissão é: {pessoa.profession}</li>)}
           </ul>
-        </>
-      }
+        }
+      </ExampleAreas>
+
+      <ExampleAreas>
+        <p className="font-bold">7)</p>
+        <p>Agora só ira mostrar os químicos, caso eles existam</p>
+        {listaFiltrada &&
+          <ul>
+            {listaFiltrada.map((person, key2) => 
+            <li key={key2}>Meu id é: {person.id}, meu nome é {person.name}, e minha profissão é: {person.profession}</li>)}
+          </ul>
+        }
+      </ExampleAreas>
     </div>
   );
 }
